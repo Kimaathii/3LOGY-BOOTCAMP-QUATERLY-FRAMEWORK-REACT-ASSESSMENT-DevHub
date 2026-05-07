@@ -44,9 +44,9 @@ builder.Services.AddAuthentication("Bearer")
 // Add CORS to allow frontend requests
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
+    options.AddPolicy("DevPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
+        policy.WithOrigins("http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "http://localhost:5176")
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
@@ -66,13 +66,12 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseCors("AllowFrontend");
+// CORS must come BEFORE UseHttpsRedirection!
+app.UseCors("DevPolicy");
+app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
-app.UseHttpsRedirection();
-
 
 app.Run();
 
