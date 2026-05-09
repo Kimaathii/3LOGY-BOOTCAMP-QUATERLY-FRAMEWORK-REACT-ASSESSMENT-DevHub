@@ -9,6 +9,10 @@ import Navbar from "./components/Navbar"
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
+import SnippetsPage from './pages/SnippetsPage';
+import TasksPage from './pages/TasksPage';
+import ResourcesPage from './pages/ResourcesPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
 
@@ -39,6 +43,50 @@ function App() {
                 <>
                   <Navbar />
                   <DashboardPage />
+                </>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/snippets"
+            element={
+              <ProtectedRoute>
+                <>
+                  <Navbar />
+                  <SnippetsPage />
+                </>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/tasks"
+            element={
+              <ProtectedRoute>
+                <>
+                  <Navbar />
+                  <TasksPage />
+                </>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/resources"
+            element={
+              <ProtectedRoute>
+                <>
+                  <Navbar />
+                  <ResourcesPage />
+                </>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <>
+                  <Navbar />
+                  <ProfilePage />
                 </>
               </ProtectedRoute>
             }
